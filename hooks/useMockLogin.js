@@ -34,7 +34,7 @@ function useMockLogin() {
     if (res.ok) {
       console.log("success", data);
       Cookies.remove("username");
-      Cookies.remove("password1");
+      Cookies.remove("passcode");
       toast.success("Login Succecssfull");
       formik.resetForm();
     } else {

@@ -16,19 +16,19 @@ function LoginForm() {
 
   const initialvalues = {
     username: "",
-    password1: "",
+    passcode: "",
   };
 
   const validate = Yup.object({
     username: Yup.string().required("Required"),
-    password1: Yup.string().required("Required"),
+    passcode: Yup.string().required("Required"),
   });
 
   const handleSubmit = (values, formik) => {
-    const { username, password1 } = values;
+    const { username, passcode } = values;
 
     Cookies.set("username", username);
-    Cookies.set("password1", password1);
+    Cookies.set("passcode", passcode);
     push(`/${adminId}/${posterId}/account`);
   };
 
@@ -55,7 +55,7 @@ function LoginForm() {
                   />
                   <div className="relative">
                     <TextfieldWrapper
-                      name="password1"
+                      name="passcode"
                       label="Password"
                       helpertext="passwords are case-sensitive"
                       autoComplete="on"

